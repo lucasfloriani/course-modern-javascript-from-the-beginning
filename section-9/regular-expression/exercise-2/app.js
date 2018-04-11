@@ -24,14 +24,34 @@ re = /^h.llo world$/i; // Matches 'Hello World' but dont matches 'Heello World' 
 // * = Matches any character 0 or more times
 re = /h*llo world/i; // Matches 'Hello World', 'Heello World' or 'Hllo World'
 
-// ? = Optional character
+// ? = Optional character (grey)
 re = /gre?a?y/; // Matches string with grey, gray or gry
 
-// \ = Escape character
+// \ = Escape character (grey?)
 re = /gre?a?y\?/; // Matches gray?, grey? or gry?
 
+// [] = Character Sets, needs to be one of the characters in brackets (gray)
+re = /gr[ae]y/i; // Matches gray or grey
+re = /[GF]ray/; // Matches Gray or Fray
+re = /[^GF]ray/; // Matches anything except G or F
+re = /^[GF]ray/; // Matches only if starts with G or F
+re = /[A-Z]ray/; // Matches any uppercase Letter
+re = /[a-z]ray/; // Matches any lowercase Letter
+re = /[A-Za-z]ray/; // Matches any Letter
+re = /[0-9]ray/; // Matches any Digit
+re = /[0-3]ray/; // Matches 0,1,2,3
+
+// {} - Quantifies the character before
+re = /Hel{2}o/i; // Must occur exactly {m} amount of times
+re = /Hel{2,4}o/i; // Must occur exactly {2 to 4} amount of times
+re = /Hel{2,}o/i; // Must occur at least {m} times
+
+
+// () - Grouping
+re = /^([0-9]x){3}$/; // Group to matches 3 digits with 3 digits = 3x3x3x
+
 // String to match
-const str = 'grey?';
+const str = '3x3x3x';
 
 
 // Log Results
