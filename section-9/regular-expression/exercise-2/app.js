@@ -46,12 +46,26 @@ re = /Hel{2}o/i; // Must occur exactly {m} amount of times
 re = /Hel{2,4}o/i; // Must occur exactly {2 to 4} amount of times
 re = /Hel{2,}o/i; // Must occur at least {m} times
 
-
 // () - Grouping
 re = /^([0-9]x){3}$/; // Group to matches 3 digits with 3 digits = 3x3x3x
 
+// Shorthand Character Classes
+re = /\w/; // \w = Word Character like alphanumeric or _
+re = /\w+/; // + = one or more
+re = /\W/; // \w = Non-Word Character anything but alphanumeric or _ like !
+re = /\d/; // Match any digit
+re = /\d+/; // Match any digit one or more times
+re = /\D/; // Match any Non-Digit character
+re = /\s/; // Match whitespace character like space or tab
+re = /\S/; // Match Non-whitespace character diferent than space or tab
+re = /Hell\b/i; // Word boundary, not word that has the word (Hello, welcome to Hell)
+
+// Assertions
+re = /x(?=y)/; // Match x only if followed by y (aosdxyhsoahsaodh)
+re = /x(?!y)/; // Match x only if not followed by y (aosdxhsoahsaodh)
+
 // String to match
-const str = '3x3x3x';
+const str = 'aosdxhsoahsaodh';
 
 
 // Log Results
