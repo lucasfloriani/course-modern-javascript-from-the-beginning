@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', getPosts);
 // Listen for add post
 document.querySelector('.post-submit').addEventListener('click', submitPost);
 
+// Listen for edit state
+document.querySelector('#posts').addEventListener('click', enableEdit);
+
 // Get Posts
 function getPosts() {
   http.get('http://localhost:3000/posts')
@@ -31,4 +34,23 @@ function submitPost() {
     getPosts();
   })
   .catch(err => console.log(err));
+}
+
+// Enable edit state
+function enableEdit(e) {
+  e.preventDefault();
+  if(!e.target.parentElement.classList.contains('edit')) return;
+
+  const id = e.target.parentElement.dataset.id;
+  const body = e.target.parentElement.previousElementSibling.textContent;
+  const title = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+
+  const data = {
+    id,
+    title,
+    body
+  }
+
+  // Fill form with current post
+  ui.fillForm(data);
 }
